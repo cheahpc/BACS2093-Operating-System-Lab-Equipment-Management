@@ -1,3 +1,4 @@
+#!/bin/bash
 SCRIPT_DIR=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
 STUDENT_DIR="$SCRIPT_DIR/student.txt"
 EQUIPMENT_DIR="$SCRIPT_DIR/equipment.txt"
@@ -38,16 +39,16 @@ menuA_show() {
           tput cup 2 25
           ;;
      1)
-          tput cup 2 25 && echo $studentID
+          tput cup 2 25 && echo ${studentID^^}
           tput cup 3 25
           ;;
      2)
-          tput cup 2 25 && echo $studentID
+          tput cup 2 25 && echo ${studentID^^}
           tput cup 3 25 && echo $fullName
           tput cup 4 25
           ;;
      3)
-          tput cup 2 25 && echo $studentID
+          tput cup 2 25 && echo ${studentID^^}
           tput cup 3 25 && echo $fullName
           tput cup 4 25 && echo $contactNumber
           tput cup 5 25
@@ -56,10 +57,10 @@ menuA_show() {
           echo "Register Another Student? (y)es or (q)uit?:"
           echo ""
           echo "Press (q) to return to Lab Equipment Management Menu."
-          tput cup 2 25 && echo $studentID
+          tput cup 2 25 && echo ${studentID^^}
           tput cup 3 25 && echo $fullName
           tput cup 4 25 && echo $contactNumber
-          tput cup 5 25 && echo $emailAddress
+          tput cup 5 25 && echo ${emailAddress,,}
           tput cup 7 43
           ;;
      10)
@@ -70,21 +71,20 @@ menuA_show() {
      11)
           echo "Invalid name. Please try again."
           echo "eg. Cheah Pin Chee"
-          tput cup 2 25 && echo $studentID
+          tput cup 2 25 && echo ${studentID^^}
           tput cup 3 25
           ;;
      12)
           echo "Invalid Contact number. Please follow the correct format."
           echo "eg. 010-9950202"
-          tput cup 2 25 && echo $studentID
+          tput cup 2 25 && echo ${studentID^^}
           tput cup 3 25 && echo $fullName
           tput cup 4 25
-
           ;;
      13)
           echo "Invalid email. Please follow the correct format."
           echo "eg. exampleABC@student.tarc.edu.my"
-          tput cup 2 25 && echo $studentID
+          tput cup 2 25 && echo ${studentID^^}
           tput cup 3 25 && echo $fullName
           tput cup 4 25 && echo $contactNumber
           tput cup 5 25
@@ -95,11 +95,16 @@ menuA_show() {
           echo "Press (q) to return to Lab Equipment Management Menu."
           echo ""
           echo "Invalid input. Please enter 'y' or 'q' only."
-          tput cup 2 25 && echo $studentID
+          tput cup 2 25 && echo ${studentID^^}
           tput cup 3 25 && echo $fullName
           tput cup 4 25 && echo $contactNumber
-          tput cup 5 25 && echo $emailAddress
+          tput cup 5 25 && echo ${emailAddress,,}
           tput cup 7 43
+          ;;
+     100)
+          echo "Error, following Student ID already exist. Please enter a new student ID"
+          echo ${studentID^^}
+          tput cup 2 25
           ;;
      esac
 }
@@ -121,7 +126,7 @@ menuB_show() {
           echo "Search Another Student? (y) es or (q) uit :"
           echo ""
           echo "Press (q) to return to Lab Equipment Management Menu."
-          tput cup 3 19 && echo $studentID
+          tput cup 3 19 && echo $readStudentID
           tput cup 7 43
           ;;
      2)
@@ -151,7 +156,7 @@ menuB_show() {
           echo "Press (q) to return to Lab Equipment Management Menu."
           echo ""
           echo "Invalid input. Please enter 'y' or 'q' only."
-          tput cup 3 19 && echo $studentID
+          tput cup 3 19 && echo $readStudentID
           tput cup 7 43
           ;;
      12)
@@ -190,22 +195,22 @@ menuC_show() {
           tput cup 3 30
           ;;
      1)
-          tput cup 3 30 && echo $stockCode
+          tput cup 3 30 && echo ${stockCode^^}
           tput cup 4 30
           ;;
      2)
-          tput cup 3 30 && echo $stockCode
+          tput cup 3 30 && echo ${stockCode^^}
           tput cup 4 30 && echo $manufacturer
           tput cup 5 30
           ;;
      3)
-          tput cup 3 30 && echo $stockCode
+          tput cup 3 30 && echo ${stockCode^^}
           tput cup 4 30 && echo $manufacturer
           tput cup 5 30 && echo $model
           tput cup 6 30
           ;;
      4)
-          tput cup 3 30 && echo $stockCode
+          tput cup 3 30 && echo ${stockCode^^}
           tput cup 4 30 && echo $manufacturer
           tput cup 5 30 && echo $model
           tput cup 6 30 && echo $itemDesc
@@ -215,7 +220,7 @@ menuC_show() {
           echo "Add Another New Equipment? (y) es or (q) uit :"
           echo ""
           echo "Press (q) to return to Lab Equipment Management Menu."
-          tput cup 3 30 && echo $stockCode
+          tput cup 3 30 && echo ${stockCode^^}
           tput cup 4 30 && echo $manufacturer
           tput cup 5 30 && echo $model
           tput cup 6 30 && echo $itemDesc
@@ -230,20 +235,20 @@ menuC_show() {
      11)
           echo "Invalid input. Please input alphabets only."
           echo "eg. HP, Agilent, Cisco"
-          tput cup 3 30 && echo $stockCode
+          tput cup 3 30 && echo ${stockCode^^}
           tput cup 4 30
           ;;
      12)
           echo "Invalid input. Only alphanumeric characters accepted."
           echo "eg. FPS1000, K50F"
-          tput cup 3 30 && echo $stockCode
+          tput cup 3 30 && echo ${stockCode^^}
           tput cup 4 30 && echo $manufacturer
           tput cup 5 30
           ;;
      13)
           echo "Invalid input. Only alphanumeric characters accepted."
           echo "eg. Silent Wireless Mouse, Gaming Keyboard with LED"
-          tput cup 3 30 && echo $stockCode
+          tput cup 3 30 && echo ${stockCode^^}
           tput cup 4 30 && echo $manufacturer
           tput cup 5 30 && echo $model
           tput cup 6 30
@@ -251,7 +256,7 @@ menuC_show() {
      14)
           echo "Invalid input. Please follow the correct format."
           echo "eg. 11-2222-33333, 12-1234-12345"
-          tput cup 3 30 && echo $stockCode
+          tput cup 3 30 && echo ${stockCode^^}
           tput cup 4 30 && echo $manufacturer
           tput cup 5 30 && echo $model
           tput cup 6 30 && echo $itemDesc
@@ -263,15 +268,19 @@ menuC_show() {
           echo "Press (q) to return to Lab Equipment Management Menu."
           echo ""
           echo "Invalid input. Please enter 'y' or 'q' only."
-          tput cup 3 30 && echo $stockCode
+          tput cup 3 30 && echo ${stockCode^^}
           tput cup 4 30 && echo $manufacturer
           tput cup 5 30 && echo $model
           tput cup 6 30 && echo $itemDesc
           tput cup 7 30 && echo $serialNumber
           tput cup 10 46
           ;;
+     100)
+          echo "Error, Following Stock Code already exist. Please enter a new Stock Code."
+          echo ${stockCode^^}
+          tput cup 3 30
+          ;;
      esac
-
 }
 
 menuD_show() {
@@ -291,8 +300,8 @@ menuD_show() {
           echo "Try Another Equipment? (y) es or (q) uit :"
           echo ""
           echo "Press (q) to return to Lab Equipment Management Menu."
-          tput cup 3 19 && echo $stockCode
-          tput cup 7 45
+          tput cup 3 19 && echo $ReadStockCode
+          tput cup 7 42
           ;;
      2)
           echo " Manufacturer (auto display)     :"
@@ -320,13 +329,13 @@ menuD_show() {
      11)
           echo "Record not found"
           echo ""
-          echo "Search Another Equipment? (y) es or (q) uit :"
+          echo "Try Another Equipment? (y) es or (q) uit :"
           echo ""
           echo "Press (q) to return to Lab Equipment Management Menu."
           echo ""
           echo "Invalid input. Please enter 'y' or 'q' only."
-          tput cup 3 19 && echo $stockCode
-          tput cup 7 45
+          tput cup 3 19 && echo $ReadStockCode
+          tput cup 7 42
           ;;
      12)
           echo " Manufacturer (auto display)     :"
@@ -408,7 +417,7 @@ menuE_show() {
           esac
           ;;
      1)
-          echo "        Loan Lab Equiment Form"
+          echo "        Loan Lab Equipment Form"
           echo "   ================================="
           echo ""
           echo "Please enter the stock code:"
@@ -420,11 +429,11 @@ menuE_show() {
           1) # Stock Code Not Found
                echo "Record not found"
                echo ""
-               echo "Search Another Equipment? (y) es or (q) uit :"
+               echo "Try Another Equipment? (y) es or (q) uit :"
                echo ""
                echo "Press (q) to return to Lab Equipment Management Menu."
-               tput cup 3 28 && echo $stockCode
-               tput cup 7 45
+               tput cup 3 28 && echo $ReadStockCode
+               tput cup 7 42
                ;;
           2) # Found Stock Code S1
                echo "Serial Number (auto display) :"
@@ -433,7 +442,7 @@ menuE_show() {
                echo "Please Enter the following Details upon the loan of the lab equipment."
                echo ""
                echo "Stock status                 : On Loan"
-               echo "Loan Date (mm/dd/yyy)        :"
+               echo "Loan Date (mm/dd/yyyy)       :"
                echo "Reason to Loan               :"
 
                tput cup 3 28 && echo $stockCode
@@ -449,7 +458,7 @@ menuE_show() {
                echo "Please Enter the following Details upon the loan of the lab equipment."
                echo ""
                echo "Stock status                 : On Loan"
-               echo "Loan Date (mm/dd/yyy)        :"
+               echo "Loan Date (mm/dd/yyyy)       :"
                echo "Reason to Loan               :"
 
                tput cup 3 28 && echo $stockCode
@@ -466,7 +475,7 @@ menuE_show() {
                echo "Please Enter the following Details upon the loan of the lab equipment."
                echo ""
                echo "Stock status                 : On Loan"
-               echo "Loan Date (mm/dd/yyy)        :"
+               echo "Loan Date (mm/dd/yyyy)       :"
                echo "Reason to Loan               :"
                echo ""
                echo "Press (y) to continue to Loan Lab Equipment or (c) to generate Lab Equipment Loan Receipt."
@@ -489,13 +498,13 @@ menuE_show() {
           11) # Stock not found and input error
                echo "Record not found"
                echo ""
-               echo "Search Another Equipment? (y) es or (q) uit :"
+               echo "Try Another Equipment? (y) es or (q) uit :"
                echo ""
                echo "Press (q) to return to Lab Equipment Management Menu."
                echo ""
                echo "Invalid input. Please enter 'y' or 'q' only."
-               tput cup 3 28 && echo $stockCode
-               tput cup 7 43
+               tput cup 3 28 && echo $ReadStockCode
+               tput cup 7 42
                ;;
           12) # Found Stock Code S1 Invalid input
                echo "Serial Number (auto display) :"
@@ -504,7 +513,7 @@ menuE_show() {
                echo "Please Enter the following Details upon the loan of the lab equipment."
                echo ""
                echo "Stock status                 : On Loan"
-               echo "Loan Date (mm/dd/yyy)        :"
+               echo "Loan Date (mm/dd/yyyy)       :"
                echo "Reason to Loan               :"
                echo ""
                echo "Invalid input. Incorrect Date format."
@@ -516,7 +525,6 @@ menuE_show() {
                tput cup 7 31 && echo $itemDesc
                tput cup 11 31
                ;;
-
           13) # Found Stock Code S2 Invalid input
                echo "Serial Number (auto display) :"
                echo "Model (auto display)         :"
@@ -524,7 +532,7 @@ menuE_show() {
                echo "Please Enter the following Details upon the loan of the lab equipment."
                echo ""
                echo "Stock status                 : On Loan"
-               echo "Loan Date (mm/dd/yyy)        :"
+               echo "Loan Date (mm/dd/yyyy)       :"
                echo "Reason to Loan               :"
                echo ""
                echo "Invalid input. Please input alphabets only."
@@ -544,7 +552,7 @@ menuE_show() {
                echo "Please Enter the following Details upon the loan of the lab equipment."
                echo ""
                echo "Stock status                 : On Loan"
-               echo "Loan Date (mm/dd/yyy)        :"
+               echo "Loan Date (mm/dd/yyyy)       :"
                echo "Reason to Loan               :"
                echo ""
                echo "Press (y) to continue to Loan Lab Equipment or (c) to generate Lab Equipment Loan Receipt."
@@ -560,6 +568,44 @@ menuE_show() {
                tput cup 11 31 && echo $loanDate
                tput cup 12 31 && echo $loanReason
                tput cup 16 18
+               ;;
+          22) # Found Stock Code S1 Invalid input Date
+               echo "Serial Number (auto display) :"
+               echo "Model (auto display)         :"
+               echo "Description (auto display)   :"
+               echo "Please Enter the following Details upon the loan of the lab equipment."
+               echo ""
+               echo "Stock status                 : On Loan"
+               echo "Loan Date (mm/dd/yyyy)       :"
+               echo "Reason to Loan               :"
+               echo ""
+               echo "Invalid Date Detected. Please choose a valid date."
+
+               tput cup 3 28 && echo $stockCode
+               tput cup 5 31 && echo $serialNumber
+               tput cup 6 31 && echo $model
+               tput cup 7 31 && echo $itemDesc
+               tput cup 11 31
+               ;;
+          100)
+               echo "Record found. Equipment on loan"
+               echo ""
+               echo "Try Another Equipment? (y) es or (q) uit :"
+               echo ""
+               echo "Press (q) to return to Lab Equipment Management Menu."
+               tput cup 3 28 && echo $ReadStockCode
+               tput cup 7 42
+               ;;
+          110)
+               echo "Record found. Equipment on loan"
+               echo ""
+               echo "Try Another Equipment? (y) es or (q) uit :"
+               echo ""
+               echo "Press (q) to return to Lab Equipment Management Menu."
+               echo ""
+               echo "Invalid input. Please enter 'y' or 'q' only."
+               tput cup 3 28 && echo $ReadStockCode
+               tput cup 7 42
                ;;
           esac
 
@@ -601,16 +647,25 @@ mainMenu() {
           [ -z $menuOption ] && mainMenu_show 0 || mainMenu_show 1 # Display
           read menuOption                                          # Read
      done
-     [ $menuOption == 'q' ] || [ $menuOption == 'Q' ] && exit
 }
 
 menuA() {
      until [ $nextStudent == "q" ] || [ $nextStudent == "Q" ]; do
           unset studentID fullName contactNumber emailAddress nextStudent # Reset Variables
+
           # Student ID
-          until [[ $studentID =~ ^[0-9]{2}[a-zA-Z]{3}[0-9]{5}$ ]]; do
-               [ -z $studentID ] && menuA_show 0 || menuA_show 10 # Display
-               read studentID                                     # Read
+          while [ true ]; do
+
+               # Check Student ID
+               if [ -z $studentID ]; then
+                    menuA_show 0 # Display
+               elif [[ $studentID =~ (^[0-9]{2}[a-zA-Z]{3}[0-9]{5}$) ]]; then
+                    [ $(grep -Fiw $studentID $STUDENT_DIR) ] break || menuA_show 100 # Display
+               else
+                    menuA_show 10 # Display
+               fi
+               # 21PMR09915
+               read studentID # Read
           done
 
           # Full Name
@@ -637,7 +692,7 @@ menuA() {
                read nextStudent                                     # Read
           done
 
-          # Store the student infomation
+          # Store the student information
           [ ! -z $(tail -1c $STUDENT_DIR) ] && echo "" >>$STUDENT_DIR
           echo "${studentID^^}:$fullName:$contactNumber:${emailAddress,,}" >>$STUDENT_DIR
      done
@@ -646,15 +701,15 @@ menuA() {
 
 menuB() {
      until [ $nextQuery == "q" ] || [ $nextQuery == "Q" ]; do
-          unset input studentID fullName contactNumber emailAddress nextQuery # Reset Variables
+          unset input readStudentID studentID fullName contactNumber emailAddress nextQuery # Reset Variables
           # Check Input
-          until [[ $studentID =~ ^[0-9]{2}[a-zA-Z]{3}[0-9]{5}$ ]]; do
-               [ -z $studentID ] && menuB_show 0 || menuB_show 10 # Display
-               read studentID                                     # Read
+          until [[ $readStudentID =~ ^[0-9]{2}[a-zA-Z]{3}[0-9]{5}$ ]]; do
+               [ -z $readStudentID ] && menuB_show 0 || menuB_show 10 # Display
+               read readStudentID                                     # Read
           done
 
           # Set Input
-          input=$(grep -i $studentID $STUDENT_DIR)
+          input=$(grep -i $readStudentID $STUDENT_DIR)
           IFS=':' read studentID fullName contactNumber emailAddress <<<$input
 
           #  Check if record is found
@@ -668,16 +723,25 @@ menuB() {
           done
 
      done
-     unset input studentID fullName contactNumber emailAddress nextQuery # Reset Variables
+     unset input readStudentID studentID fullName contactNumber emailAddress nextQuery # Reset Variables
 }
 
 menuC() {
      until [ $nextEquipment == "q" ] || [ $nextEquipment == "Q" ]; do
           unset stockCode manufacturer model itemDesc serialNumber nextEquipment # Reset Variables
+
           # Stock Code
-          until [[ $stockCode =~ ^[sS]{1}[0-9]{5}$ ]]; do
-               [ -z $stockCode ] && menuC_show 0 || menuC_show 10 # Display
-               read stockCode                                     # Read
+          while [ true ]; do
+               # Check Student ID
+               if [ -z $stockCode ]; then
+                    menuC_show 0 # Display
+               elif [[ $stockCode =~ ^[sS]{1}[0-9]{5}$ ]]; then
+                    [ $(grep -Fiw $stockCode $EQUIPMENT_DIR) ] break || menuC_show 100 # Display
+               else
+                    menuC_show 10 # Display
+               fi
+               # 21PMR09915
+               read stockCode # Read
           done
 
           # Manufacturer
@@ -719,15 +783,15 @@ menuC() {
 
 menuD() {
      until [ $nextStock == "q" ] || [ $nextStock == "Q" ]; do
-          unset input stockCode manufacturer model itemDesc serialNumber status nextStock # Reset Variables
+          unset input ReadStockCode stockCode manufacturer model itemDesc serialNumber status nextStock # Reset Variables
           # Check Input
-          until [[ $stockCode =~ ^[sS]{1}[0-9]{5}$ ]]; do
-               [ -z $stockCode ] && menuD_show 0 || menuD_show 10 # Display
-               read stockCode                                     # Read
+          until [[ $ReadStockCode =~ ^[sS]{1}[0-9]{5}$ ]]; do
+               [ -z $ReadStockCode ] && menuD_show 0 || menuD_show 10 # Display
+               read ReadStockCode                                     # Read
           done
 
           # Set Input
-          input=$(grep -i $stockCode $EQUIPMENT_DIR)
+          input=$(grep -i $ReadStockCode $EQUIPMENT_DIR)
           IFS=':' read stockCode manufacturer model itemDesc serialNumber status <<<$input
 
           #  Check if record is found
@@ -740,11 +804,10 @@ menuD() {
                read nextStock # Read
           done
      done
-     unset input stockCode manufacturer model itemDesc serialNumber status nextStock # Reset Variables
+     unset input ReadStockCode stockCode manufacturer model itemDesc serialNumber status nextStock # Reset Variables
 }
 
 menuE() {
-
      while [ true ]; do
           unset loanCount inputStudent nextID studentID fullName contactNumber emailAddress # Reset Variables
           loanCount=0
@@ -780,14 +843,14 @@ menuE() {
                     return                                                                           # Return to main menu
                else                                                                                  # If Procee Next Loan to Loan Lab Equipment
                     while [ true ]; do
-                         unset inputEquipment nextLoanEquipment nextLoan nextStock stockCode manufacturer model itemDesc serialNumber status # Reset Variables
-                         until [[ $stockCode =~ ^[sS]{1}[0-9]{5}$ ]]; do
-                              [ -z $stockCode ] && menuE_show 1 0 || menuE_show 1 10 # Display
-                              read stockCode                                         # Read
+                         unset inputEquipment nextLoanEquipment nextLoan nextStock ReadStockCode stockCode manufacturer model itemDesc serialNumber status # Reset Variables
+                         until [[ $ReadStockCode =~ ^[sS]{1}[0-9]{5}$ ]]; do
+                              [ -z $ReadStockCode ] && menuE_show 1 0 || menuE_show 1 10 # Display
+                              read ReadStockCode                                         # Read
                          done
 
                          # Set Input
-                         inputEquipment=$(grep -i $stockCode $EQUIPMENT_DIR)
+                         inputEquipment=$(grep -i $ReadStockCode $EQUIPMENT_DIR)
                          IFS=':' read stockCode manufacturer model itemDesc serialNumber status <<<$inputEquipment
 
                          #  Check if Stock Code is found
@@ -804,15 +867,31 @@ menuE() {
                               else # If try another stock code
                                    continue
                               fi
-                         else # If Stock Code is found
+                         elif [[ $status == "On Loan" ]]; then # If Stock Code found but Not Available
+                              until [[ $nextStock =~ ^[yqYQ]{1}$ ]]; do
+                                   [ -z $nextStock ] && menuE_show 1 100 || menuE_show 1 110 # Display
+                                   read nextStock                                            # Read
+                              done
+
+                              if [ $nextStock == "q" ] || [ $nextStock == "Q" ]; then                                                # If don't try another stock code
+                                   unset inputStudent nextID nextLoan studentID fullName contactNumber emailAddress                  # Reset Variables
+                                   unset inputEquipment nextLoan nextStock stockCode manufacturer model itemDesc serialNumber status # Reset Variables
+                                   return
+                              else # If try another stock code
+                                   continue
+                              fi
+                         else # If Stock Code is found - Available
                               # Check Date
-                              dateValid=1
                               unset loanDate loanReason
-                              until [ $dateValid == 0 ]; do
-                                   [ -z $loanDate ] && menuE_show 1 2 || menuE_show 1 12 # Display
-                                   read loanDate                                         # Read
-                                   date "+%d/%m/%Y" -d $loanDate >/dev/null 2>&1
-                                   dateValid=$?
+                              while [ true ]; do
+                                   if [ -z $loanDate ]; then                                                   # If loan date is empty
+                                        menuE_show 1 2                                                         # Display
+                                   elif [[ $loanDate =~ (^[0-9]{2}/[0-9]{2}/[0-9]{4}$) ]]; then                # If load date is not not empty and match the format
+                                        [[ $(date -d "${loanDate}" 2>/dev/null) ]] && break || menuE_show 1 22 # Display
+                                   else
+                                        menuE_show 1 12 # Display
+                                   fi
+                                   read loanDate
                               done
 
                               # Check Reason
@@ -825,6 +904,8 @@ menuE() {
                               ((loanCount++))
                               [ ! -z $(tail -1c $TEMP_DIR) ] && echo "" >>$TEMP_DIR
                               echo "$loanCount:$model:$itemDesc:$loanReason" >>$TEMP_DIR
+                              sed -i "/$ReadStockCode/d" $EQUIPMENT_DIR
+                              echo "${stockCode^^}:$manufacturer:$model:$itemDesc:$serialNumber:On Loan" >>$EQUIPMENT_DIR
 
                               # Check Print Receipt
                               until [[ $nextLoanEquipment =~ ^[yYcC]{1}$ ]]; do
@@ -841,19 +922,19 @@ menuE() {
                                    unset loanCount loanDate loanList loanReason                                          # Reset Variables
                                    unset inputEquipment inputStudent input                                               # Reset Variables
                                    unset studentID fullName contactNumber emailAddress nextStudent                       # Reset Variables
-                                   unset stockCode manufacturer model itemDesc serialNumber                              # Reset Variables
+                                   unset ReadStockCode stockCode manufacturer model itemDesc serialNumber                # Reset Variables
                                    return
                               fi
-
                          fi
-
                     done
-
                fi
           fi
-
      done
+}
 
+end() {
+     clear
+     exit
 }
 
 generateReport() {
@@ -894,7 +975,8 @@ while [ true ]; do
      'e' | 'E')
           menuE
           ;;
-
+     'q' | 'Q')
+          end
+          ;;
      esac
-
 done

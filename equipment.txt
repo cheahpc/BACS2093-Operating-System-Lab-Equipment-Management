@@ -1,3 +1,10 @@
-S10000:HP:FPS1000:Silent Wireless Mouse:11-2222-33333:Available
-S10001:HP:K500F:Gaming Keyboard with LED:00-1111-22222:On Loan
-S12345:samsung:kps0992:haha big dildo:12-1234-12333:Available
+S10003:HP:FPS1000:Silent Wireless Mouse:11-2222-33333:On Loan
+S10005:HP:FPS1000:Silent Wireless Mouse:11-2222-33333:Available
+S10006:HP:FPS1000:Silent Wireless Mouse:11-2222-33333:Available
+S10009:HP:K500F:Gaming Keyboard with LED:00-1111-22222:Available
+S10000:HP:FPS1000:Silent Wireless Mouse:11-2222-33333:On Loan
+S10001:HP:FPS1000:Silent Wireless Mouse:11-2222-33333:On Loan
+S10007:HP:K500F:Gaming Keyboard with LED:00-1111-22222:On Loan
+S10002:HP:FPS1000:Silent Wireless Mouse:11-2222-33333:On Loan
+S10004:HP:FPS1000:Silent Wireless Mouse:11-2222-33333:On Loan
+S10008:HP:K500F:Gaming Keyboard with LED:00-1111-22222:On Loan
