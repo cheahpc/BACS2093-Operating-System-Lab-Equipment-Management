@@ -1,0 +1,13 @@
+                                    Equipment Load Receipt
+
+Student ID         : 21PMR09915
+Student Name       : Cheah Pin Chee
+Loan Date          : 02/02/2022
+===================================================================================================
+  No.  Model       Description                        Reason to Loan                               
+===================================================================================================
+  1    FPS1000     Silent Wireless Mouse              For FYP Testing                                                                                     
+  2    FPS1000     Silent Wireless Mouse              For FYP Testing                                                                                     
+  3    K500F       Gaming Keyboard with LED           For FYP Testing                                                                                     
+
+Total loan items:  3
