@@ -3,7 +3,7 @@ SCRIPT_DIR=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
 STUDENT_DIR="$SCRIPT_DIR/student.txt"
 EQUIPMENT_DIR="$SCRIPT_DIR/equipment.txt"
 TEMP_DIR="$SCRIPT_DIR/temp.txt"
-
+# region Display
 mainMenu_show() {
      clear
      echo " Lab Equipment Management Menu"
@@ -640,7 +640,9 @@ menuE_show() {
           ;;
      esac
 }
+# endregion Display
 
+# region Function
 mainMenu() {
      unset menuOption
      until [[ $menuOption =~ ^[abcdeqABCDEQ]{1}$ ]]; do
@@ -660,7 +662,7 @@ menuA() {
                if [ -z $studentID ]; then
                     menuA_show 0 # Display
                elif [[ $studentID =~ (^[0-9]{2}[a-zA-Z]{3}[0-9]{5}$) ]]; then
-                    [ $(grep -Fiw $studentID $STUDENT_DIR) ] break || menuA_show 100 # Display
+                    [ -z $(grep -i $studentID $STUDENT_DIR) ] && break || menuA_show 100 # Display
                else
                     menuA_show 10 # Display
                fi
@@ -736,7 +738,7 @@ menuC() {
                if [ -z $stockCode ]; then
                     menuC_show 0 # Display
                elif [[ $stockCode =~ ^[sS]{1}[0-9]{5}$ ]]; then
-                    [ $(grep -Fiw $stockCode $EQUIPMENT_DIR) ] break || menuC_show 100 # Display
+                    [ -z $(grep -Fiw $stockCode $EQUIPMENT_DIR) ] break || menuC_show 100 # Display
                else
                     menuC_show 10 # Display
                fi
@@ -956,6 +958,7 @@ generateReport() {
      echo "" >>"$reportDir"
      echo "Total loan items: " $loanCount >>"$reportDir"
 }
+# endregion Function
 
 while [ true ]; do
      mainMenu
